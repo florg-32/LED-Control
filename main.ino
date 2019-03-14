@@ -1,5 +1,7 @@
 #include "lib/Color.h"
 
+Color color = Color();
+
 void setup() {
     pinMode(Color::R, OUTPUT);
     pinMode(Color::G, OUTPUT);
@@ -9,13 +11,9 @@ void setup() {
     while (!Serial) {}
     Serial.write("Hello Controller");
 
-    Color::set(50, 0, 0);
+    color.set(20, 20, 20);
     delay(300);
-    Color::set(0, 50, 0);
-    delay(300);
-    Color::set(0, 0, 50);
-    delay(300);
-    Color::set(0,0,0);
+    color.set(0, 0, 0);
 }
 
 void loop() {
@@ -23,14 +21,20 @@ void loop() {
 }
 
 void serialEvent() {
-    if (Serial.available() < 4) { return; }
     switch (Serial.read())
     {
         case 0:
-            Color::set(Serial.read(), Serial.read(), Serial.read());
+            while (Serial.available() < 3) {}
+            color.set(Serial.read(), Serial.read(), Serial.read());
             break;
+
+        case 1:
+            while (Serial.available() < 4) {}
+            color.fade(Serial.read(), Serial.read(), Serial.read(), Serial.read());
+            break;
+            
         default:
-            Color::error();
+            color.error();
             break;
     }
 }

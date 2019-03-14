@@ -7,8 +7,6 @@ from serial import Serial
 
 def by(n):
     return n.to_bytes(1, 'big')
-
-s = Serial("COM3", 9600)
  
 class MyApp(QMainWindow):
     def __init__(self):
@@ -17,11 +15,13 @@ class MyApp(QMainWindow):
 
     def setColor(self):
         s.write(by(0))
-        s.write(by(self.rSlider.value()))
-        s.write(by(self.gSlider.value()))
         s.write(by(self.bSlider.value()))
+        s.write(by(self.gSlider.value()))
+        s.write(by(self.rSlider.value()))
  
 if __name__ == "__main__":
+    s = Serial("COM3", 9600)
+    
     app = QApplication([])
     window = MyApp()
     window.show()
