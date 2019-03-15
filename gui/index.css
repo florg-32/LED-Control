@@ -1,0 +1,39 @@
+* {
+    background-color: rgb(37, 44, 56);
+    color: white;
+    text-align: center;
+    font-family: "Lato", "sans-serif";
+    margin: auto;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+}
+
+button {
+    background-color: rgb(200, 100, 0); /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    opacity: 0.9;
+    transition: 0.2s;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    opacity: 1;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    width: 50%;
+}

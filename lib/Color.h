@@ -20,8 +20,8 @@ Color::Color() {
 }
 
 void Color::set(int r, int g, int b) {
-    analogWrite(R, g);
-    analogWrite(G, b);
+    analogWrite(R, b);
+    analogWrite(G, g);
     analogWrite(B, r);
     curr[0] = r;
     curr[1] = g;
